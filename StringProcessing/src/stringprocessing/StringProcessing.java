@@ -40,7 +40,13 @@ public class StringProcessing {
                 String phonenumber = line[4];
                 String emailadress = line[5];
                 
-              
+                if(genderIsValid(gender)){
+                    records[curIndex] = String.format("");
+                    
+                }else{
+                    System.err.println(String.format(""));
+                }
+                
                 records[curIndex] = String.format("%-8s,%-8s,%-6s,%-3s,%-10s,%-20s",firstname,lastname,gender,age,phonenumber,emailadress);
                 System.out.println(records[curIndex]);
               //  records[curIndex] = String.format("");
@@ -51,7 +57,15 @@ public class StringProcessing {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(StringProcessing.class.getName()).log(Level.SEVERE, null, ex);
             System.err.print("File was not found");
-        }
+        }   
     }
+    
+    private static boolean genderIsValid(String gender){
+            if(gender.trim().equalsIgnoreCase("male")){
+                return true;
+            }else if(gender.trim().equalsIgnoreCase("female"))
+                return true;
+                return false;
+        }
     
 }
